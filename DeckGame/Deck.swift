@@ -23,7 +23,7 @@ class Deck
     
     func shuffleDeck () {
         for card in 0..<createdDeck.count {
-            let randomPositon = Int(arc4random_uniform(UInt32(createdDeck.count - 1)))
+            let randomPositon = Int(arc4random_uniform(UInt32(createdDeck.count)))
             createdDeck.swapAt(card , randomPositon)
         }
         

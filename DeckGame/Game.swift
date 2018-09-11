@@ -15,11 +15,9 @@ class Game {
             var playerScore = 0
             var aiScore = 0
             playerScore += (player.hand[card].rank.rawValue + player.hand[card].suit.rawValue)
-            print(playerScore)
             aiScore += (ai.hand[card].rank.rawValue + ai.hand[card].suit.rawValue)
-            print(aiScore)
-            print("The player has drawn a \(player.hand[card].rank) of \(player.hand[card].suit)")
-            print("The ai has drawn a \(ai.hand[card].rank) of \(player.hand[card].suit)")
+            print("The player has drawn a \(player.hand[card].rank) of \(player.hand[card].suit) worth \(playerScore)")
+            print("The ai has drawn a \(ai.hand[card].rank) of \(player.hand[card].suit) worth \(aiScore)")
             if playerScore > aiScore {
                 print("The player has scored a point!\n\n")
                 sleep(2)
