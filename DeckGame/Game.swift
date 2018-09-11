@@ -8,28 +8,38 @@
 
 import Foundation
 class Game {
-    func duel() {
-        var scores = [Int]()
-        
-        for player in totalPlayers {
+    func duel(player: Player, ai: Player) {
+        var playerTotalScore = 0
+        var aiTotalScore = 0
+        for card in 0..<player.hand.count {
             var playerScore = 0
-            for card in player.hand {
-               playerScore += (card.rank.rawValue + card.suit.rawValue)
+            var aiScore = 0
+            playerScore += (player.hand[card].rank.rawValue + player.hand[card].suit.rawValue)
+            print(playerScore)
+            aiScore += (ai.hand[card].rank.rawValue + ai.hand[card].suit.rawValue)
+            print(aiScore)
+            print("The player has drawn a \(player.hand[card].rank) of \(player.hand[card].suit)")
+            print("The ai has drawn a \(ai.hand[card].rank) of \(player.hand[card].suit)")
+            if playerScore > aiScore {
+                print("The player has scored a point!\n\n")
+                sleep(2)
+                playerTotalScore += 1
+            }else if aiScore > playerScore {
+                print("The ai has scored a point!\n\n")
+                sleep(2)
+                aiTotalScore += 1
+            }else {
+                print("Neither player has scored.\n\n")
+                sleep(2)
             }
-            scores.append(playerScore)
         }
-        print("and the player scores are \(scores)")
-        var highestScore = 0
-        var highestScoreSpot = 0
-        for (index,score) in scores.enumerated() {
-            if score > highestScore {
-                highestScore = score
-                highestScoreSpot = index
-            }
+        if playerTotalScore > aiTotalScore {
+            print("The player has won!")
+        }else if aiTotalScore > playerTotalScore {
+            print("The ai has won!")
+        }else {
+            print("The game ended in a draw.")
         }
-        print("Player \(highestScoreSpot + 1) has the highest score of \(highestScore)")
+        
     }
-    
-    
-    
 }

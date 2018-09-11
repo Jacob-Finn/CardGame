@@ -73,6 +73,6 @@ class Menu {
         """)
     }
     func duel() {
-        game.duel()
+        game.duel(player: player1, ai: player2)
     }
 }
